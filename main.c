@@ -39,7 +39,7 @@ char RotationEncrypt(char character, int shift){
         }
         message[i]=character;
     }
-    printf("%s", message);
+    printf("Encrypted message is: %s", message);
     return;
 }
 
@@ -60,6 +60,6 @@ char RotationDecrypt(char character, int shift){
         }
         message[i]=character;
     }
-    printf("%s", message);
+    printf("Decrypted message is: %s", message);
     return;
 }

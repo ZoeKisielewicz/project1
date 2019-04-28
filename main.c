@@ -1,5 +1,10 @@
 #include <stdio.h>    
 
+/*This code allows the user to select between four tasks. Each task is printed on the screen in a list format. Based on their choice,
+the switch statements corresponding with their choice will call upon the appropriate function. This code requires user input in 
+choosing the message to encrypt/ decrypt, the key for the substitution cypher, and the amounf of shifts required for the rotation 
+cypher. */
+
 void RotationEncrypt(char *Message, int Shift);
 void RotationDecrypt(char *Message, int Shift);
 void SubstitutionEncryption(char *Message);
@@ -7,20 +12,20 @@ void SubstitutionDecryption(char *Message);
 
 int main(){
     
-    int Option;
+    int Option; //To hold the option the user wishes to complete.
     char Message[50]; //Array to store the message entered in.
     int Shift; //Amount of shifts inputed by the user.
     
-    printf("Please choose an option printed below.\n");
-    printf("-Enter 1 to encript a rotation cypher.\n");
-    printf("-Enter 2 to decript a rotation cypher.\n");
-    printf("-Enter 3 to encript a substitution cypher.\n");
-    printf("-Enter 4 to decript a substitution cypher.\n");
+    printf("Please choose an option printed below.\n"); //Printed menu for the user to choose which task they would like the code to complete.
+    printf("-Enter 1 to encrypt a rotation cypher.\n");
+    printf("-Enter 2 to decrypt a rotation cypher.\n");
+    printf("-Enter 3 to encrypt a substitution cypher.\n");
+    printf("-Enter 4 to decrypt a substitution cypher.\n");
     scanf("%d", & Option);
     
-    printf("Thankyou.\n"); //Manners 
+    printf("Thankyou.\n"); //Manners.
     
-    switch(Option){
+    switch(Option){ //Switch statement to call upon the appropriate functions that correspond with the users choice.
     case 1: RotationEncrypt(Message, Shift); break;
     case 2: RotationDecrypt(Message, Shift); break;
     case 3: SubstitutionEncryption(Message); break;
@@ -32,14 +37,16 @@ int main(){
     return 0;
 }
 
+/*This function takes a message entered by the user and shifts each letter in the alphabet forward by the amount of shifts the user inputed.
+This function is limited to a message 50 characters or under, in capital letters only. This function also does not read whitespace. */
 void RotationEncrypt(char *Message, int Shift){
     
     char Character;
     int d; //Counter for each letter of the alphabet.
     
-    printf("Please enter message to encrypt: ");
+    printf("Please enter message to encrypt in capital letters, with no spaces: ");
     scanf("%s", Message); //This stores the message entered in a string named message.
-    printf("Please enter amount of shifts: ");
+    printf("Please enter amount of shifts (0-25): ");
     scanf("%d", &Shift); //This stores the amount of shifts the user wants each character of the alphabet to shift by.
     
     for(d=0; Message[d]!='\0'; d++){ //This loop runs untill the character of the array is 0.
@@ -58,14 +65,16 @@ void RotationEncrypt(char *Message, int Shift){
     
 }
 
+/*This function takes a message entered by the user and shifts each letter in the alphabet backwards by the amount of shifts the user inputed.
+This function is limited to a message 50 characters or under, in capital letters only. This function also does not read whitespace. */
 void RotationDecrypt(char *Message, int Shift){
     
     char Character;
     int d; //Counter for each letter of the alphabet.
     
-    printf("Enter message to dectrypt: ");
+    printf("Enter message to dectrypt in capital letters, with no spaces: ");
     scanf("%s", Message); //This stores the message entered in a string named message.
-    printf("Enter amount of shifts: ");
+    printf("Enter amount of shifts (0-25): ");
     scanf("%d", &Shift); //This stores the amount of shifts the user wants each character of the alphabet to shift by.
     
     for(d=0; Message[d]!='\0'; d++){ //This loop runs untill the character of the array is 0.
@@ -84,6 +93,9 @@ void RotationDecrypt(char *Message, int Shift){
     
 }
 
+/*This function takes a message entered by the user and compares each letter in the alphabet to the substitution key the user inputed.
+It then replaces each letter of the message with the letter that corresponds it in the substitution key. This function is limited to 
+a message 50 characters or under, in capital letters only. This function also does not read whitespace. */
 void SubstitutionEncryption(char *Message){ 
     
     char OrigionalAlphabet[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; //This array will store the initial alphabet.
@@ -111,6 +123,9 @@ void SubstitutionEncryption(char *Message){
     
 }
 
+/*This function takes a message entered by the user and compares each letter in the alphabet to the substitution key the user inputed.
+It then replaces each letter of the message with the letter that corresponds it in the alphabet. This function is limited to 
+a message 50 characters or under, in capital letters only. This function also does not read whitespace. */
 void SubstitutionDecryption(char *Message){
     
     char OrigionalAlphabet[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; //This array will store the initial alphabet.
